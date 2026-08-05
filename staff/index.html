@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Login — CJ Klinik</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body data-page="login">
+<div class="s-login-shell">
+  <div class="s-login-card">
+    <div class="s-login-icon">🔒</div>
+    <h2 style="margin:0 0 4px" data-i18n="login_title"></h2>
+    <p style="color:var(--ink-500);font-size:13.5px;margin:0 0 20px" data-i18n="login_desc"></p>
+    <form data-form="staff-login">
+      <div class="field"><label data-i18n="login_pass"></label><input type="password" name="passcode" autofocus autocomplete="current-password"></div>
+      <div class="note" id="login-error" style="display:none;color:var(--red-500);border-color:var(--red-500);margin-bottom:12px" data-i18n="login_error"></div>
+      <button class="btn btn-primary" style="width:100%" type="submit" data-i18n="login_submit"></button>
+    </form>
+    <p class="note" style="margin-top:16px" data-i18n="login_note"></p>
+    <div style="margin-top:14px;text-align:center">
+      <select class="lang-select" id="lang-select">
+        <option value="en">English</option>
+        <option value="zh">中文</option>
+        <option value="ms">Bahasa Malaysia</option>
+      </select>
+    </div>
+    <a class="btn btn-ghost btn-sm" style="margin-top:10px;width:100%;display:block;text-align:center" href="/" data-i18n="viewPublic"></a>
+  </div>
+</div>
+
+<script src="/assets/content.js"></script>
+<script src="/assets/common.js"></script>
+<script src="/assets/staff-chrome.js"></script>
+</body>
+</html>

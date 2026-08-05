@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notices — CJ Klinik Staff</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body data-page="notices">
+<div class="s-shell">
+  <div id="staff-sidebar"></div>
+  <div class="s-main">
+    <div id="staff-topbar"></div>
+    <div class="s-content">
+      <p class="section-sub" data-i18n="notices_sub"></p>
+      <div class="card" style="margin-bottom:20px">
+        <strong data-i18n="notices_templates"></strong>
+        <div class="template-row" style="margin-top:12px" id="template-row"></div>
+        <div class="field"><label data-i18n="notices_message"></label><textarea id="notice-message-input" rows="3"></textarea></div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-primary" id="publish-btn" data-i18n="notices_publish"></button>
+          <button class="btn btn-outline" id="clear-btn" data-i18n="notices_clear"></button>
+        </div>
+        <div id="notice-active-slot"></div>
+      </div>
+      <div class="card">
+        <strong data-i18n="notices_socialTitle"></strong>
+        <p style="font-size:13px;color:var(--ink-500)" data-i18n="notices_socialDesc"></p>
+        <div class="toggle-locked">
+          <div>📷 Instagram &nbsp;|&nbsp; 📘 Facebook</div>
+          <div style="display:flex;align-items:center;gap:10px"><span class="pill pill-locked">🔒 <span data-i18n="notices_socialLocked"></span></span><div class="toggle-switch"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/content.js"></script>
+<script src="/assets/common.js"></script>
+<script src="/assets/staff-chrome.js"></script>
+<script src="/assets/page-staff-notices.js"></script>
+</body>
+</html>

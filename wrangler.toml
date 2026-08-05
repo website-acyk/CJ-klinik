@@ -1,0 +1,11 @@
+name = "cj-klinik"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "."
+
+# D1 database binding. After creating your database with:
+#   wrangler d1 create cj-klinik-db
+# paste the returned database_id below (replace the placeholder).
+[[d1_databases]]
+binding = "DB"
+database_name = "cj-klinik-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
