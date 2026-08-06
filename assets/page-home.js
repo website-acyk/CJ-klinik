@@ -8,7 +8,7 @@ window.CJ_PAGE_INIT = function(){
   document.getElementById('hero-loc-pill').innerHTML = `📍 ${tr(C.CLINIC_LOCATION)} · ${t('view_on_map')} <span class="map-arrow">↗</span>`;
 
   document.getElementById('services-grid').innerHTML = C.SERVICES.map(s=>`
-    <div class="card service-card">
+    <div class="card service-card reveal">
       <div class="service-icon">${s.icon}</div>
       <h3>${tr(s.name)}</h3>
       <p>${tr(s.desc)}</p>
@@ -18,18 +18,19 @@ window.CJ_PAGE_INIT = function(){
     `<div class="full-service-item"><span class="chk">✓</span>${tr(item)}</div>`).join('');
 
   document.getElementById('facility-list').innerHTML = C.FACILITIES.map(f=>
-    `<div class="facility-item"><span class="ico">${f.icon}</span>${tr(f.name)}</div>`).join('');
+    `<div class="facility-item reveal"><span class="ico-wrap"><span class="ico">${f.icon}</span></span>${tr(f.name)}</div>`).join('');
 
   document.getElementById('healthtip-grid').innerHTML = C.HEALTH_TIPS.map(ht=>`
-    <div class="card healthtip-card">
-      <div class="ht-icon">${ht.icon}</div>
+    <div class="card healthtip-card reveal">
+      ${ht.img ? `<div class="ht-photo"><img src="${ht.img}" alt="${tr(ht.title)}" loading="lazy"></div>` : `<div class="ht-icon">${ht.icon}</div>`}
       <h3>${tr(ht.title)}</h3>
       <p>${tr(ht.text)}</p>
     </div>`).join('');
 
   document.getElementById('trust-panel').innerHTML = C.PANEL_ADMINISTRATORS.map(p=>`<span class="trust-badge">${p}</span>`).join('');
-  document.getElementById('trust-corporate').innerHTML = C.CORPORATE_CLIENTS.map(cl=>`<span class="trust-badge">${cl}</span>`).join('')
+  const corporateBadges = C.CORPORATE_CLIENTS.map(cl=>`<span class="trust-badge">${cl}</span>`).join('')
     + ` <span class="trust-badge" style="background:transparent;border-style:dashed">${t('trusted_andMore')}</span>`;
+  document.getElementById('trust-corporate').innerHTML = corporateBadges + corporateBadges;
 
   const addrLink = document.getElementById('visit-address-link');
   addrLink.href = C.googleMapsUrl();
