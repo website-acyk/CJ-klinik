@@ -27,7 +27,34 @@
     escapeHTML(s){
       return String(s==null?'':s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     },
-    qs(name){ return new URLSearchParams(location.search).get(name); }
+    qs(name){ return new URLSearchParams(location.search).get(name); },
+    /* Returns an array of "HH:MM" 30-min time slots for the clinic's opening
+       hours on the given ISO date string, or [] if the clinic is closed that day. */
+    timeSlotsForDate(dateStr){
+      if(!dateStr) return [];
+      const d = new Date(dateStr + 'T00:00:00');
+      if(isNaN(d.getTime())) return [];
+      const day = d.getDay(); // 0=Sun … 6=Sat
+      let start, end;
+      if(day === 6) return []; // Saturday — closed
+      if(day === 0){ start = 8*60; end = 13*60; } // Sunday 8:00–13:00
+      else { start = 8*60; end = 18*60; } // Mon–Fri 8:00–18:00
+      const out = [];
+      for(let m=start; m<end; m+=30){
+        const hh = String(Math.floor(m/60)).padStart(2,'0');
+        const mm = String(m%60).padStart(2,'0');
+        out.push(`${hh}:${mm}`);
+      }
+      return out;
+    },
+    formatTimeDisplay(hhmm){
+      const parts = String(hhmm||'').split(':');
+      const h = parseInt(parts[0], 10), m = parseInt(parts[1], 10);
+      if(isNaN(h) || isNaN(m)) return hhmm || '';
+      const period = h < 12 ? 'AM' : 'PM';
+      const h12 = (h % 12) === 0 ? 12 : (h % 12);
+      return `${h12}:${String(m).padStart(2,'0')} ${period}`;
+    }
   };
 
   async function request(path, opts){
@@ -47,6 +74,7 @@
   window.CJ_API = {
     getNotice: () => request('/api/notice'),
     getSlots: (date) => request('/api/slots?date=' + encodeURIComponent(date)),
+    getBookedTimes: (date) => request('/api/booked-times?date=' + encodeURIComponent(date)),
     createAppointment: (body) => request('/api/appointments', {method:'POST', body: JSON.stringify(body)}),
 
     login: (passcode) => request('/api/auth/login', {method:'POST', body: JSON.stringify({passcode})}),
@@ -64,5 +92,38 @@
     saveGuideline: (url) => request('/api/staff/guideline', {method:'POST', body: JSON.stringify({url})}),
     getRoster: () => request('/api/staff/roster'),
     saveRosterRow: (day_key, staff) => request('/api/staff/roster', {method:'POST', body: JSON.stringify({day_key, staff})})
+  };
+
+  /* Shared time-slot picker used by the online Booking form and the
+     WhatsApp quick-contact popup. Renders buttons into `container`;
+     already-booked times are disabled/greyed. */
+  window.CJ_TIMEPICKER = {
+    async render(container, dateStr, selectedTime, onSelect){
+      const t = window.CJ_I18N.t;
+      const times = window.CJ_UTIL.timeSlotsForDate(dateStr);
+      if(!times.length){
+        container.innerHTML = `<div class="time-slot-empty">${t('time_closed')}</div>`;
+        return;
+      }
+      let booked = [];
+      try{
+        const res = await window.CJ_API.getBookedTimes(dateStr);
+        booked = res.times || [];
+      }catch(e){ /* if this fails, just show all times as available */ }
+
+      container.innerHTML = times.map(tm=>{
+        const isBooked = booked.indexOf(tm) !== -1;
+        const isSelected = tm === selectedTime;
+        return `<button type="button" class="time-slot-btn${isSelected?' selected':''}" data-time="${tm}" ${isBooked?'disabled':''}>${window.CJ_UTIL.formatTimeDisplay(tm)}</button>`;
+      }).join('');
+
+      container.querySelectorAll('.time-slot-btn:not([disabled])').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          container.querySelectorAll('.time-slot-btn').forEach(b=>b.classList.remove('selected'));
+          btn.classList.add('selected');
+          onSelect(btn.getAttribute('data-time'));
+        });
+      });
+    }
   };
 })();
