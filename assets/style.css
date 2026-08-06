@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
 
 :root{
---teal-50:#f0fbfa; --teal-100:#d7f3f0; --teal-200:#aee6e0; --teal-500:#1a9c95; --teal-600:#128077; --teal-700:#0d635d;
---ink-900:#12242b; --ink-700:#33474f; --ink-500:#5c7178; --ink-300:#94a5aa; --ink-100:#e7eef0;
---amber-500:#e2a63b;
---red-500:#d9534f; --red-100:#fbe7e6;
---green-600:#2f9e5b; --green-100:#e3f7ea;
---radius-lg:18px; --radius-md:12px; --radius-sm:8px;
---shadow-soft:0 4px 20px rgba(18,36,43,0.08);
---shadow-card:0 2px 10px rgba(18,36,43,0.06);
---slate-900:#131b23; --slate-800:#1c2733;
---font: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
---font-display: 'Poppins', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
---amber-100:#fbead1; --amber-700:#a8720b;
---violet-100:#ece7fb; --violet-700:#5b3fa0;
---blue-100:#e2eefc; --blue-700:#1f5fa8;
+  --teal-50:#f0fbfa; --teal-100:#d7f3f0; --teal-200:#aee6e0; --teal-500:#1a9c95; --teal-600:#128077; --teal-700:#0d635d;
+  --ink-900:#12242b; --ink-700:#33474f; --ink-500:#5c7178; --ink-300:#94a5aa; --ink-100:#e7eef0;
+  --amber-500:#e2a63b;
+  --red-500:#d9534f; --red-100:#fbe7e6;
+  --green-600:#2f9e5b; --green-100:#e3f7ea;
+  --radius-lg:18px; --radius-md:12px; --radius-sm:8px;
+  --shadow-soft:0 4px 20px rgba(18,36,43,0.08);
+  --shadow-card:0 2px 10px rgba(18,36,43,0.06);
+  --slate-900:#131b23; --slate-800:#1c2733;
+  --font: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Poppins', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  --amber-100:#fbead1; --amber-700:#a8720b;
+  --violet-100:#ece7fb; --violet-700:#5b3fa0;
+  --blue-100:#e2eefc; --blue-700:#1f5fa8;
 }
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;font-family:var(--font);color:var(--ink-900);background:var(--teal-50);}
@@ -63,6 +63,25 @@ th{color:var(--ink-500);font-weight:700;font-size:12px;text-transform:uppercase;
 .wa-float{position:fixed;bottom:22px;right:22px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:50;animation:waPulse 2.4s ease-in-out infinite;text-decoration:none;}
 .wa-float:hover{background:#1ebe5a;}
 @keyframes waPulse{0%,100%{box-shadow:0 6px 20px rgba(0,0,0,.25);}50%{box-shadow:0 6px 20px rgba(0,0,0,.25),0 0 0 8px rgba(37,211,102,.25);}}
+
+/* ---------- time-slot picker (booking form + WhatsApp quick form) ---------- */
+.time-slot-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.time-slot-btn{border:1.5px solid var(--ink-100);background:#fff;border-radius:9px;padding:8px 12px;font-size:12.5px;font-weight:700;color:var(--ink-700);}
+.time-slot-btn:hover:not([disabled]){border-color:var(--teal-500);}
+.time-slot-btn.selected{background:var(--teal-600);border-color:var(--teal-600);color:#fff;}
+.time-slot-btn[disabled]{background:var(--ink-100);color:var(--ink-300);text-decoration:line-through;cursor:not-allowed;}
+.time-slot-empty{font-size:13px;color:var(--red-500);font-weight:600;background:var(--red-100);border-radius:9px;padding:10px 12px;}
+
+/* ---------- WhatsApp quick-contact popup ---------- */
+.wa-modal-overlay{position:fixed;inset:0;background:rgba(18,36,43,.55);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100;opacity:0;visibility:hidden;transition:opacity .18s ease;}
+.wa-modal-overlay.open{opacity:1;visibility:visible;}
+.wa-modal-card{background:#fff;border-radius:var(--radius-lg);padding:28px;width:100%;max-width:420px;max-height:90vh;overflow:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.35);}
+.wa-modal-card h3{margin:0 0 8px;font-size:19px;}
+.wa-modal-sub{font-size:13px;color:var(--ink-500);margin:0 0 18px;line-height:1.5;}
+.wa-modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:16px;color:var(--ink-500);padding:4px;}
+.wa-modal-error{background:var(--red-100);color:#8f2d2a;border-radius:9px;padding:10px 12px;font-size:12.5px;font-weight:600;margin-bottom:14px;}
+.wa-modal-note{font-size:12px;color:var(--ink-500);background:var(--teal-50);border:1px dashed var(--teal-200);border-radius:9px;padding:9px 11px;margin:6px 0 18px;}
+.wa-modal-actions{display:flex;justify-content:flex-end;gap:10px;}
 
 /* ---------- CUSTOMER THEME (public / professional) ---------- */
 body.mode-customer{background:var(--teal-50);}
@@ -115,8 +134,6 @@ body.mode-customer{background:var(--teal-50);}
 .c-nav a.active{background:var(--teal-100);color:var(--teal-700);}
 .c-nav a:hover{background:var(--teal-50);}
 .c-topbar-right{display:flex;align-items:center;gap:10px;}
-.c-staff-link{font-size:12.5px;color:var(--ink-500);border:1px solid var(--ink-100);padding:6px 12px;border-radius:8px;}
-.c-staff-link:hover{border-color:var(--ink-300);}
 .hero{position:relative;overflow:hidden;background:radial-gradient(1000px 500px at 85% -10%, var(--teal-200), transparent 60%),radial-gradient(700px 500px at -5% 110%, var(--teal-100), transparent 60%),linear-gradient(160deg, var(--teal-50), #fff 60%);padding:70px 6vw 50px;}
 .hero::before{content:'';position:absolute;top:-120px;right:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle, var(--teal-200), transparent 70%);opacity:.7;pointer-events:none;}
 .hero::after{content:'';position:absolute;bottom:-140px;left:-100px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, var(--amber-500), transparent 70%);opacity:.18;pointer-events:none;}
@@ -223,16 +240,17 @@ body.mode-staff{background:var(--slate-900);}
 .dash-stat .lbl{font-size:12.5px;color:var(--ink-500);font-weight:600;}
 .dash-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
 @media (max-width:900px){
-.hero-inner{grid-template-columns:1fr;}
-.booking-wrap, .duty-grid, .visit-grid{grid-template-columns:1fr;}
-.s-sidebar{width:76px;}
-.s-sidebar .label-text{display:none;}
-.s-brand span.brand-text{display:none;}
-.highlights-band-inner{justify-content:flex-start;gap:14px 24px;}
+  .hero-inner{grid-template-columns:1fr;}
+  .booking-wrap, .duty-grid, .visit-grid{grid-template-columns:1fr;}
+  .s-sidebar{width:76px;}
+  .s-sidebar .label-text{display:none;}
+  .s-brand span.brand-text{display:none;}
+  .highlights-band-inner{justify-content:flex-start;gap:14px 24px;}
 }
 @media (prefers-reduced-motion: reduce){
-.reveal{opacity:1;transform:none;transition:none;}
-.wa-float{animation:none;}
-.trust-badges-track{animation:none;}
-.card,.service-card,.healthtip-card,.facility-item,.doctor-card{transition:none;}
+  .reveal{opacity:1;transform:none;transition:none;}
+  .wa-float{animation:none;}
+  .trust-badges-track{animation:none;}
+  .card,.service-card,.healthtip-card,.facility-item,.doctor-card{transition:none;}
+  .wa-modal-overlay{transition:none;}
 }
