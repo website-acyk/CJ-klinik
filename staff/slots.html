@@ -14,8 +14,22 @@
     <div id="staff-topbar"></div>
     <div class="s-content">
       <p class="section-sub" data-i18n="slots_sub"></p>
-      <div class="field" style="max-width:220px;margin-bottom:20px"><label data-i18n="slots_date"></label><input type="date" id="slots-date"></div>
-      <div id="slots-list"></div>
+      <div class="weekslot-toolbar">
+        <div class="weekslot-nav">
+          <button type="button" class="btn btn-outline btn-sm" id="slots-prev-week" data-i18n="slots_prevWeek"></button>
+          <button type="button" class="btn btn-outline btn-sm" id="slots-this-week" data-i18n="slots_thisWeek"></button>
+          <button type="button" class="btn btn-outline btn-sm" id="slots-next-week" data-i18n="slots_nextWeek"></button>
+          <span class="weekslot-label" id="slots-week-label"></span>
+        </div>
+        <div class="weekslot-actions">
+          <button type="button" class="btn btn-outline btn-sm" id="slots-copy-prev" data-i18n="slots_copyPrev"></button>
+          <button type="button" class="btn btn-outline btn-sm" id="slots-clear-week" data-i18n="slots_clearWeek"></button>
+          <button type="button" class="btn btn-primary" id="slots-save-week" data-i18n="slots_saveWeek"></button>
+        </div>
+      </div>
+      <p class="note" data-i18n="slots_hint"></p>
+      <div id="slots-grid"></div>
+      <p class="weekslot-status" id="slots-status"></p>
     </div>
   </div>
 </div>
