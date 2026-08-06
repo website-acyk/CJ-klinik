@@ -111,11 +111,11 @@ const SERVICE_LIST_FULL = [
 ];
 
 const HEALTH_TIPS = [
-  {icon:'🤰', title:{en:'Rubella Screening for Pregnancy',zh:'孕前风疹抗体检查',ms:'Saringan Rubella untuk Kehamilan'},
+  {icon:'🤰', img:'/assets/img/707125770_17920185444359050_4170952425493720795_n.jpg', title:{en:'Rubella Screening for Pregnancy',zh:'孕前风疹抗体检查',ms:'Saringan Rubella untuk Kehamilan'},
    text:{en:"Planning a pregnancy or pregnant now? Don't forget the Rubella (IgG) blood test — infection in early pregnancy may affect your baby's development. A simple blood test checks if you're protected.",
          zh:'计划怀孕或已经怀孕？别忘了做风疹抗体检查（Rubella IgG）。怀孕初期若感染风疹，可能影响宝宝发育。简单验血即可知道您是否已有保护抗体。',
          ms:'Merancang kehamilan atau sedang hamil? Jangan lupa ujian darah Rubella (IgG) — jangkitan pada awal kehamilan boleh menjejaskan perkembangan bayi. Ujian darah mudah dapat menyemak sama ada anda dilindungi.'}},
-  {icon:'🧠', title:{en:'Tension Headache Relief Therapy',zh:'压力性头痛舒缓疗程',ms:'Terapi Kelegaan Sakit Kepala Tegang'},
+  {icon:'🧠', img:'/assets/img/708266222_17920324020359050_788813142808293853_n.jpg', title:{en:'Tension Headache Relief Therapy',zh:'压力性头痛舒缓疗程',ms:'Terapi Kelegaan Sakit Kepala Tegang'},
    text:{en:'Long hours on screen, stress and poor posture can cause tension headaches. Our wellness pain relief therapy helps relax tight muscles and reduce tension.',
          zh:'长时间用电脑、压力大、姿势不良都可能导致压力性头痛。我们的舒缓理疗有助放松紧绷肌肉，减轻头痛。',
          ms:'Waktu skrin yang lama, tekanan dan postur yang tidak baik boleh menyebabkan sakit kepala tegang. Terapi kelegaan kami membantu melegakan otot tegang.'}},
@@ -123,7 +123,7 @@ const HEALTH_TIPS = [
    text:{en:'Trying for a baby? Our semen analysis checks sperm count, motility and morphology — private, confidential and professional.',
          zh:'准备生育？我们提供精液分析检查（精子数量、活动力、形态），私密且专业。',
          ms:'Cuba untuk mendapatkan anak? Analisis air mani kami menyemak kiraan, pergerakan dan bentuk sperma — sulit dan profesional.'}},
-  {icon:'💉', title:{en:'HPV Vaccine (Gardasil 9)',zh:'HPV 疫苗（Gardasil 9）',ms:'Vaksin HPV (Gardasil 9)'},
+  {icon:'💉', img:'/assets/img/474893529_17856868986359050_4433343360703433233_n.jpg', title:{en:'HPV Vaccine (Gardasil 9)',zh:'HPV 疫苗（Gardasil 9）',ms:'Vaksin HPV (Gardasil 9)'},
    text:{en:'Gardasil 9 helps protect ages 9–45 against diseases caused by 9 HPV types, including cervical cancer and genital warts, for both males and females.',
          zh:'Gardasil 9 可帮助9至45岁人士预防9种HPV病毒引发的疾病，包括子宫颈癌及生殖器疣，男女皆适用。',
          ms:'Gardasil 9 membantu melindungi usia 9–45 tahun daripada penyakit disebabkan 9 jenis HPV, termasuk kanser serviks dan kutil kelamin, untuk lelaki dan wanita.'}}
