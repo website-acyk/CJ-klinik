@@ -25,7 +25,7 @@
     <div class="c-topbar">
       <div class="c-topbar-inner">
         <div class="c-brand">
-                  <a href="/" style="display:flex;align-items:center;text-decoration:none;color:inherit"><img class="c-brand-mark" src="/assets/img/683879694_17916673392359050_4907399894885324601_n.jpg" alt="Klinik CJ logo"></a>
+          <a href="/" style="display:flex;align-items:center;text-decoration:none;color:inherit"><img class="c-brand-mark" src="/assets/img/683879694_17916673392359050_4907399894885324601_n.jpg" alt="Klinik CJ logo"></a>
           <div>
             <a href="/" class="c-brand-name" style="text-decoration:none;color:inherit;display:block">${t('brand')}</a>
             <div class="c-brand-loc"><a class="map-link" href="${C.googleMapsUrl()}" target="_blank" rel="noopener">📍 ${tr(C.CLINIC_LOCATION)} <span class="map-arrow">↗</span></a></div>
@@ -51,6 +51,10 @@
     </div></div>`;
   }
 
+  function waFloatHTML(){
+    return `<a class="wa-float" href="${C.CLINIC_WHATSAPP_LINK}" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">💬</a>`;
+  }
+
   function applyStaticI18n(){
     document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.getAttribute('data-i18n')); });
     document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML = t(el.getAttribute('data-i18n-html')); });
@@ -70,6 +74,18 @@
     }catch(e){ /* notice banner is non-critical; fail silently */ }
   }
 
+  function initScrollReveal(){
+    const els = document.querySelectorAll('.reveal');
+    if(!els.length) return;
+    if(!('IntersectionObserver' in window)){ els.forEach(el=>el.classList.add('in-view')); return; }
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(el=>io.observe(el));
+  }
+
   function init(){
     document.body.classList.add('mode-customer');
     const page = document.body.getAttribute('data-page') || 'home';
@@ -77,11 +93,13 @@
     const footer = document.getElementById('site-footer');
     if(header) header.innerHTML = headerHTML(page);
     if(footer) footer.innerHTML = footerHTML();
+    document.body.insertAdjacentHTML('beforeend', waFloatHTML());
     const langSelect = document.getElementById('lang-select');
     if(langSelect) langSelect.addEventListener('change', e=>{ setLang(e.target.value); location.reload(); });
     applyStaticI18n();
     renderNoticeBanner();
     if(typeof window.CJ_PAGE_INIT === 'function') window.CJ_PAGE_INIT();
+    initScrollReveal();
   }
 
   window.CJ_CHROME = { applyStaticI18n };
