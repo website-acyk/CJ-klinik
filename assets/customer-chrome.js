@@ -36,7 +36,6 @@
         </div>
         <div class="c-topbar-right">
           ${langSelectHTML()}
-          <a class="c-staff-link" href="/staff/">${t('nav_staffLogin')}</a>
         </div>
       </div>
     </div>
