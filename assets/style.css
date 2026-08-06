@@ -91,8 +91,10 @@ body.mode-customer{background:var(--teal-50);}
 .full-service-item{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:var(--ink-700);line-height:1.4;}
 .full-service-item .chk{color:var(--teal-600);font-weight:800;flex-shrink:0;margin-top:1px;}
 .healthtip-grid{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
-.healthtip-card{border-top:4px solid var(--teal-500);}
+.healthtip-card{border-top:4px solid var(--teal-500);overflow:hidden;}
 .healthtip-card .ht-icon{font-size:28px;margin-bottom:10px;}
+.healthtip-card .ht-photo{margin:-24px -24px 14px;height:150px;overflow:hidden;}
+.healthtip-card .ht-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .healthtip-card h3{margin:0 0 8px;font-size:15.5px;}
 .healthtip-card p{margin:0;font-size:13px;color:var(--ink-500);line-height:1.55;}
 .healthtip-card:nth-child(4n+1){border-top-color:var(--teal-500);}
