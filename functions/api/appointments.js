@@ -16,14 +16,15 @@ export async function onRequestPost({ request, env }) {
   }
 
   const slot = clean(body.slot, 20) || 'morning';
+  const time = clean(body.time, 5);
   const service = clean(body.service, 120);
   const doctor = clean(body.doctor, 120);
   const notes = clean(body.notes, 1000);
 
   const res = await env.DB.prepare(
-    `INSERT INTO appointments (name, phone, date, slot, service, doctor, notes, status, created_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, 'new', ?)`
-  ).bind(name, phone, date, slot, service, doctor, notes, Date.now()).run();
+    `INSERT INTO appointments (name, phone, date, slot, time, service, doctor, notes, status, created_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'new', ?)`
+  ).bind(name, phone, date, slot, time, service, doctor, notes, Date.now()).run();
 
   return jsonResponse({ ok: true, id: res.meta.last_row_id }, 201);
 }
