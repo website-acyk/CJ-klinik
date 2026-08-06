@@ -18,8 +18,9 @@
       <div class="field"><label data-i18n="booking_name"></label><input required name="name" type="text"></div>
       <div class="field"><label data-i18n="booking_phone"></label><input required name="phone" type="tel"></div>
       <div class="field"><label data-i18n="booking_date"></label><input required name="date" type="date" id="booking-date"></div>
-      <div class="field"><label data-i18n="booking_slot"></label>
-        <select name="slot" id="booking-slot"></select>
+      <div class="field"><label data-i18n="booking_time"></label>
+        <div class="time-slot-grid" id="booking-time-grid"></div>
+        <input type="hidden" name="time" id="booking-time-value">
       </div>
       <div class="field"><label data-i18n="booking_service"></label>
         <select name="service" id="booking-service"></select>
