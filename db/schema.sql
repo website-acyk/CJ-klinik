@@ -1,6 +1,6 @@
 -- CJ Klinik — D1 database schema
 -- Run once against your D1 database:
---   wrangler d1 execute cj-klinik-db --remote --file=./db/schema.sql
+-- wrangler d1 execute cj-klinik-db --remote --file=./db/schema.sql
 -- (use --local instead of --remote for local development)
 
 CREATE TABLE IF NOT EXISTS sessions (
@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS appointments (
   phone TEXT NOT NULL,
   date TEXT NOT NULL,
   slot TEXT NOT NULL,
+  time TEXT,
   service TEXT,
   doctor TEXT,
   notes TEXT,
