@@ -28,8 +28,7 @@ window.CJ_PAGE_INIT = function(){
     </div>`).join('');
 
   document.getElementById('trust-panel').innerHTML = C.PANEL_ADMINISTRATORS.map(p=>`<span class="trust-badge">${p}</span>`).join('');
-  const corporateBadges = C.CORPORATE_CLIENTS.map(cl=>`<span class="trust-badge">${cl}</span>`).join('')
-    + ` <span class="trust-badge" style="background:transparent;border-style:dashed">${t('trusted_andMore')}</span>`;
+  const corporateBadges = C.CORPORATE_CLIENTS.map(cl=>`<span class="trust-badge">${cl}</span>`).join('');
   document.getElementById('trust-corporate').innerHTML = corporateBadges + corporateBadges;
 
   const addrLink = document.getElementById('visit-address-link');
