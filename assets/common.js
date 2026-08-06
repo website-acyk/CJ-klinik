@@ -28,6 +28,19 @@
       return String(s==null?'':s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     },
     qs(name){ return new URLSearchParams(location.search).get(name); },
+    addDays(dateStr, n){
+      const d = new Date(dateStr + 'T00:00:00');
+      d.setDate(d.getDate() + n);
+      return d.toISOString().slice(0,10);
+    },
+    /* Returns the ISO date of the Monday of the week containing dateStr. */
+    startOfWeek(dateStr){
+      const d = new Date(dateStr + 'T00:00:00');
+      const day = d.getDay(); // 0=Sun … 6=Sat
+      const diff = day === 0 ? -6 : 1 - day;
+      d.setDate(d.getDate() + diff);
+      return d.toISOString().slice(0,10);
+    },
     /* Returns an array of "HH:MM" 30-min time slots for the clinic's opening
        hours on the given ISO date string, or [] if the clinic is closed that day. */
     timeSlotsForDate(dateStr){
@@ -84,6 +97,8 @@
     listAppointments: () => request('/api/staff/appointments'),
     confirmAppointment: (id) => request('/api/staff/appointments/' + id, {method:'PATCH', body: JSON.stringify({status:'confirmed'})}),
     setSlot: (body) => request('/api/staff/slots', {method:'POST', body: JSON.stringify(body)}),
+    getSlotsWeek: (start) => request('/api/staff/slots-week?start=' + encodeURIComponent(start)),
+    saveSlotsWeek: (entries) => request('/api/staff/slots-week', {method:'POST', body: JSON.stringify({entries})}),
     publishNotice: (body) => request('/api/staff/notice', {method:'POST', body: JSON.stringify(body)}),
     clearNotice: () => request('/api/staff/notice', {method:'DELETE'}),
     getSheetLinks: () => request('/api/staff/sheet-links'),
