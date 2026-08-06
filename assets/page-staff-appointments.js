@@ -20,13 +20,14 @@ window.CJ_PAGE_INIT = async function(){
     container.innerHTML = `<div class="card" style="padding:0;overflow:auto">
       <table>
         <thead><tr>
-          <th>${t('col_name')}</th><th>${t('col_contact')}</th><th>${t('col_date')}</th><th>${t('col_slot')}</th><th>${t('col_service')}</th><th>${t('col_doctor')}</th><th>${t('col_status')}</th><th></th>
+          <th>${t('col_name')}</th><th>${t('col_contact')}</th><th>${t('col_date')}</th><th>${t('col_time')}</th><th>${t('col_slot')}</th><th>${t('col_service')}</th><th>${t('col_doctor')}</th><th>${t('col_status')}</th><th></th>
         </tr></thead>
         <tbody>
           ${appointments.map(a=>`<tr>
             <td>${U.escapeHTML(a.name)}</td>
             <td>${U.escapeHTML(a.phone)}</td>
             <td>${U.escapeHTML(a.date)}</td>
+            <td>${a.time ? U.escapeHTML(window.CJ_UTIL.formatTimeDisplay(a.time)) : '-'}</td>
             <td>${t('slot_'+a.slot) || a.slot}</td>
             <td>${U.escapeHTML(a.service)}</td>
             <td>${U.escapeHTML(a.doctor)}</td>
