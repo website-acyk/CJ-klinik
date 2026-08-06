@@ -115,8 +115,7 @@
       zh: [`您好 ${C.CLINIC_NAME}，我想预约看诊。`, `姓名：${name}`, `原因：${reason}`, `日期：${date}`, `时间：${timeDisplay}`],
       ms: [`Hai ${C.CLINIC_NAME}, saya ingin membuat temujanji.`, `Nama: ${name}`, `Sebab: ${reason}`, `Tarikh: ${date}`, `Masa: ${timeDisplay}`]
     };
-    return (lines[lang] || lines.en).join('
-');
+    return (lines[lang] || lines.en).join(String.fromCharCode(10));
   }
 
   function initWaQuickForm(){
