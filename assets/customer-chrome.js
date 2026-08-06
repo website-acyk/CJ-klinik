@@ -25,7 +25,7 @@
     <div class="c-topbar">
       <div class="c-topbar-inner">
         <div class="c-brand">
-          <a href="/" style="display:flex;align-items:center;text-decoration:none;color:inherit"><div class="c-brand-mark">✚</div></a>
+                  <a href="/" style="display:flex;align-items:center;text-decoration:none;color:inherit"><img class="c-brand-mark" src="/assets/img/683879694_17916673392359050_4907399894885324601_n.jpg" alt="Klinik CJ logo"></a>
           <div>
             <a href="/" class="c-brand-name" style="text-decoration:none;color:inherit;display:block">${t('brand')}</a>
             <div class="c-brand-loc"><a class="map-link" href="${C.googleMapsUrl()}" target="_blank" rel="noopener">📍 ${tr(C.CLINIC_LOCATION)} <span class="map-arrow">↗</span></a></div>
