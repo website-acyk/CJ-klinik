@@ -43,9 +43,15 @@ window.CJ_PAGE_INIT = function(){
       document.querySelector('#booking-form [name=phone]').focus();
       return;
     }
+    const emailRaw = (fd.get('email') || '').trim();
+    if(emailRaw && !U.isValidEmail(emailRaw)){
+      msgBox.innerHTML = `<div class="error-box">⚠️ ${t('booking_emailInvalid')}</div>`;
+      document.querySelector('#booking-form [name=email]').focus();
+      return;
+    }
     const hour = parseInt(selectedTime.split(':')[0], 10);
     const body = {
-      name: fd.get('name'), phone: fd.get('phone'), date: fd.get('date'),
+      name: fd.get('name'), phone: fd.get('phone'), email: emailRaw, date: fd.get('date'),
       slot: hour < 13 ? 'morning' : 'afternoon', time: selectedTime,
       service: fd.get('service'), doctor: fd.get('doctor'), notes: fd.get('notes')
     };
