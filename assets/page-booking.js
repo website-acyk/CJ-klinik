@@ -38,6 +38,11 @@ window.CJ_PAGE_INIT = function(){
       return;
     }
     const fd = new FormData(e.target);
+    if(!U.isValidMYPhone(fd.get('phone'))){
+      msgBox.innerHTML = `<div class="error-box">⚠️ ${t('booking_phoneInvalid')}</div>`;
+      document.querySelector('#booking-form [name=phone]').focus();
+      return;
+    }
     const hour = parseInt(selectedTime.split(':')[0], 10);
     const body = {
       name: fd.get('name'), phone: fd.get('phone'), date: fd.get('date'),
