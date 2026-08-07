@@ -84,15 +84,15 @@ th{color:var(--ink-500);font-weight:700;font-size:12px;text-transform:uppercase;
 .wa-modal-note{font-size:12px;color:var(--ink-500);background:var(--teal-50);border:1px dashed var(--teal-200);border-radius:9px;padding:9px 11px;margin:6px 0 18px;}
 .wa-modal-actions{display:flex;justify-content:flex-end;gap:10px;}
 
-/* ---------- staff notice popup (jump-out reminder of the active customer notice) ---------- */
-.staff-notice-popup-overlay{position:fixed;inset:0;background:rgba(10,20,25,.62);display:flex;align-items:center;justify-content:center;padding:20px;z-index:200;opacity:0;visibility:hidden;transition:opacity .18s ease;}
-.staff-notice-popup-overlay.open{opacity:1;visibility:visible;}
-.staff-notice-popup-card{background:var(--ink-900);color:#fff;border-radius:var(--radius-lg);padding:34px 28px 28px;width:100%;max-width:400px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.45);}
-.staff-notice-popup-close{position:absolute;top:-14px;right:-14px;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--ink-900);border:none;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.25);}
-.staff-notice-popup-icon{font-size:38px;margin-bottom:12px;}
-.staff-notice-popup-title{margin:0 0 10px;font-size:19px;font-weight:800;}
-.staff-notice-popup-message{margin:0 0 22px;font-size:14px;line-height:1.6;color:#cfe0e4;}
-.staff-notice-popup-ok{width:100%;}
+/* ---------- notice popup (jump-out reminder of the active clinic notice) ---------- */
+.notice-popup-overlay{position:fixed;inset:0;background:rgba(10,20,25,.62);display:flex;align-items:center;justify-content:center;padding:20px;z-index:200;opacity:0;visibility:hidden;transition:opacity .18s ease;}
+.notice-popup-overlay.open{opacity:1;visibility:visible;}
+.notice-popup-card{background:var(--ink-900);color:#fff;border-radius:var(--radius-lg);padding:34px 28px 28px;width:100%;max-width:400px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.45);}
+.notice-popup-close{position:absolute;top:-14px;right:-14px;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--ink-900);border:none;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.25);}
+.notice-popup-icon{font-size:38px;margin-bottom:12px;}
+.notice-popup-title{margin:0 0 10px;font-size:19px;font-weight:800;}
+.notice-popup-message{margin:0 0 22px;font-size:14px;line-height:1.6;color:#cfe0e4;}
+.notice-popup-ok{width:100%;}
 
 /* ---------- CUSTOMER THEME (public / professional) ---------- */
 body.mode-customer{background:var(--teal-50);}
@@ -359,7 +359,7 @@ body[data-page="duty"] .duty-week-legend-swatch.state-both{background:var(--teal
   .wa-float{width:48px;height:48px;font-size:21px;bottom:16px;right:16px;}
   .wa-modal-card{padding:20px;max-width:94vw;}
   .wa-modal-card h3{font-size:16.5px;}
-  .staff-notice-popup-card{padding:26px 20px 22px;max-width:92vw;}
+  .notice-popup-card{padding:26px 20px 22px;max-width:92vw;}
   .card{padding:16px;}
   .doctor-card{flex-direction:column;text-align:center;}
   .doctor-photo{margin:0 auto;}
