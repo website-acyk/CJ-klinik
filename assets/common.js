@@ -126,9 +126,21 @@
   window.CJ_TIMEPICKER = {
     async render(container, dateStr, selectedTime, onSelect){
       const t = window.CJ_I18N.t;
-      const times = window.CJ_UTIL.timeSlotsForDate(dateStr);
+      const U = window.CJ_UTIL;
+      let times = U.timeSlotsForDate(dateStr);
       if(!times.length){
         container.innerHTML = `<div class="time-slot-empty">${t('time_closed')}</div>`;
+        return;
+      }
+      /* Hide slots that have already started/passed when booking for today,
+         so customers can't select a time earlier in the day than right now. */
+      if(dateStr === U.todayISO()){
+        const now = new Date();
+        const nowHHMM = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+        times = times.filter(tm => tm > nowHHMM);
+      }
+      if(!times.length){
+        container.innerHTML = `<div class="time-slot-empty">${t('time_pastToday')}</div>`;
         return;
       }
       let booked = [];
