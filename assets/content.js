@@ -207,7 +207,7 @@ const UI = {
     slots_saving:'Saving…', slots_saved:'Saved!', slots_unsaved:'You have unsaved changes — click Save Week to apply them.',
     notices_title:'Post a Notice', notices_sub:'Let customers know if the clinic is resting or closed today.', notices_templates:'Choose a template', notices_message:'Message', notices_publish:'Publish to Website', notices_clear:'Clear Notice', notices_activeNow:'Currently showing on customer site:', notices_none:'No notice is currently active — customers see normal operating hours.',
     notices_socialTitle:'Auto-post to Instagram & Facebook', notices_socialDesc:'This feature is wired and ready. Connect your Meta Business account to let publishing a notice here also post it automatically to Instagram and Facebook.', notices_socialLocked:'Not connected yet',
-    appts_title:'Appointment Requests', appts_sub:'Bookings submitted from the customer website.', appts_empty:'No appointments yet.', col_name:'Name', col_contact:'Contact', col_date:'Date', col_slot:'Slot', col_service:'Service', col_doctor:'Doctor Pref.', col_status:'Status', appts_confirm:'Confirm', status_new:'New', status_confirmed:'Confirmed',
+    appts_title:'Appointment Requests', appts_sub:'Bookings submitted from the customer website.', appts_empty:'No appointments yet.', col_name:'Name', col_contact:'Contact', col_date:'Date', col_slot:'Slot', col_service:'Service', col_doctor:'Doctor Pref.', col_status:'Status', appts_confirm:'Confirm', status_new:'New', status_confirmed:'Confirmed', status_declined:'Declined', appts_decline:'Decline', appts_search_placeholder:'Search by name, phone or date…', appts_filterAll:'All', appts_filterNew:'New', appts_filterConfirmed:'Confirmed', appts_filterDeclined:'Declined', appts_noResults:'No appointments match your search.',
     viewPublic:'View Public Site', loading:'Loading…'
   },
   zh:{
@@ -253,7 +253,7 @@ const UI = {
     slots_saving:'保存中…', slots_saved:'已保存！', slots_unsaved:'有未保存的更改 — 请点击"保存本周"以生效。',
     notices_title:'发布通知', notices_sub:'让顾客知道诊所今日休息或不营业。', notices_templates:'选择模板', notices_message:'通知内容', notices_publish:'发布到网站', notices_clear:'清除通知', notices_activeNow:'目前显示在顾客网站上：', notices_none:'目前没有生效中的通知 — 顾客将看到正常营业时间。',
     notices_socialTitle:'自动发布到 Instagram 和 Facebook', notices_socialDesc:'此功能已开发完成，随时可用。连接您的 Meta 商业账号后，在此发布通知也会自动同步到 Instagram 和 Facebook。', notices_socialLocked:'尚未连接',
-    appts_title:'预约请求', appts_sub:'来自顾客网站提交的预约。', appts_empty:'暂无预约。', col_name:'姓名', col_contact:'联络方式', col_date:'日期', col_slot:'时段', col_service:'服务', col_doctor:'指定医生', col_status:'状态', appts_confirm:'确认', status_new:'新', status_confirmed:'已确认',
+    appts_title:'预约请求', appts_sub:'来自顾客网站提交的预约。', appts_empty:'暂无预约。', col_name:'姓名', col_contact:'联络方式', col_date:'日期', col_slot:'时段', col_service:'服务', col_doctor:'指定医生', col_status:'状态', appts_confirm:'确认', status_new:'新', status_confirmed:'已确认', status_declined:'已婉拒', appts_decline:'婉拒', appts_search_placeholder:'搜索姓名、电话或日期…', appts_filterAll:'全部', appts_filterNew:'新', appts_filterConfirmed:'已确认', appts_filterDeclined:'已婉拒', appts_noResults:'没有符合搜索条件的预约。',
     viewPublic:'查看顾客网站', loading:'加载中…'
   },
   ms:{
@@ -299,7 +299,7 @@ const UI = {
     slots_saving:'Menyimpan…', slots_saved:'Disimpan!', slots_unsaved:'Anda mempunyai perubahan belum disimpan — klik Simpan Minggu untuk menggunakannya.',
     notices_title:'Siarkan Notis', notices_sub:'Maklumkan pelanggan jika klinik rehat atau tutup hari ini.', notices_templates:'Pilih templat', notices_message:'Mesej', notices_publish:'Siarkan ke Laman Web', notices_clear:'Kosongkan Notis', notices_activeNow:'Sedang dipaparkan di laman pelanggan:', notices_none:'Tiada notis aktif buat masa ini — pelanggan akan melihat waktu operasi biasa.',
     notices_socialTitle:'Auto-siar ke Instagram & Facebook', notices_socialDesc:'Ciri ini telah siap dibina. Sambungkan akaun Meta Business anda supaya penyiaran notis di sini turut disiarkan secara automatik ke Instagram dan Facebook.', notices_socialLocked:'Belum disambungkan',
-    appts_title:'Permintaan Temujanji', appts_sub:'Tempahan yang dihantar dari laman web pelanggan.', appts_empty:'Belum ada temujanji.', col_name:'Nama', col_contact:'Hubungan', col_date:'Tarikh', col_slot:'Slot', col_service:'Perkhidmatan', col_doctor:'Pilihan Doktor', col_status:'Status', appts_confirm:'Sahkan', status_new:'Baharu', status_confirmed:'Disahkan',
+    appts_title:'Permintaan Temujanji', appts_sub:'Tempahan yang dihantar dari laman web pelanggan.', appts_empty:'Belum ada temujanji.', col_name:'Nama', col_contact:'Hubungan', col_date:'Tarikh', col_slot:'Slot', col_service:'Perkhidmatan', col_doctor:'Pilihan Doktor', col_status:'Status', appts_confirm:'Sahkan', status_new:'Baharu', status_confirmed:'Disahkan', status_declined:'Ditolak', appts_decline:'Tolak', appts_search_placeholder:'Cari mengikut nama, telefon atau tarikh…', appts_filterAll:'Semua', appts_filterNew:'Baharu', appts_filterConfirmed:'Disahkan', appts_filterDeclined:'Ditolak', appts_noResults:'Tiada temujanji sepadan dengan carian anda.',
     viewPublic:'Lihat Laman Awam', loading:'Memuatkan…'
   }
 };
