@@ -1,6 +1,6 @@
 -- CJ Klinik — D1 database schema
 -- Run once against your D1 database:
--- wrangler d1 execute cj-klinik-db --remote --file=./db/schema.sql
+--   wrangler d1 execute cj-klinik-db --remote --file=./db/schema.sql
 -- (use --local instead of --remote for local development)
 
 CREATE TABLE IF NOT EXISTS sessions (
@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS appointments (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   phone TEXT NOT NULL,
+  email TEXT,
   date TEXT NOT NULL,
   slot TEXT NOT NULL,
   time TEXT,
@@ -21,6 +22,10 @@ CREATE TABLE IF NOT EXISTS appointments (
   status TEXT NOT NULL DEFAULT 'new',
   created_at INTEGER NOT NULL
 );
+-- NOTE: CREATE TABLE IF NOT EXISTS only applies to brand-new databases.
+-- On an existing database (this project's live one included), add the
+-- new email column by running this once against it:
+--   ALTER TABLE appointments ADD COLUMN email TEXT;
 
 CREATE TABLE IF NOT EXISTS doctor_slots (
   doctor_id TEXT NOT NULL,
