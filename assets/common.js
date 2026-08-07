@@ -82,7 +82,7 @@
        spaces, dashes, parentheses and a +60/60/0 country-code prefix.
        Accepts e.g. "012-345 6789", "+6012-3456789", "04-2820811". */
     isValidMYPhone(raw){
-      let s = String(raw||'').trim().replace(/[\s\-()]/g, '');
+      let s = String(raw||'').trim().replace(/[s-()]/g, '');
       if(!s) return false;
       if(s.startsWith('+60')) s = '0' + s.slice(3);
       else if(s.startsWith('60') && s.length > 9) s = '0' + s.slice(2);
@@ -117,6 +117,7 @@
 
     listAppointments: () => request('/api/staff/appointments'),
     confirmAppointment: (id) => request('/api/staff/appointments/' + id, {method:'PATCH', body: JSON.stringify({status:'confirmed'})}),
+    setAppointmentStatus: (id, status) => request('/api/staff/appointments/' + id, {method:'PATCH', body: JSON.stringify({status})}),
     setSlot: (body) => request('/api/staff/slots', {method:'POST', body: JSON.stringify(body)}),
     getSlotsWeek: (start) => request('/api/staff/slots-week?start=' + encodeURIComponent(start)),
     saveSlotsWeek: (entries) => request('/api/staff/slots-week', {method:'POST', body: JSON.stringify({entries})}),
