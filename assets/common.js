@@ -23,7 +23,17 @@
   window.CJ_I18N = { getLang, setLang, t, tr };
 
   window.CJ_UTIL = {
-    todayISO(){ return new Date().toISOString().slice(0,10); },
+    /* Formats a Date object as a local-calendar YYYY-MM-DD string.
+       Deliberately avoids toISOString() here, since that converts to UTC
+       and would shift the date backwards by a day for any timezone ahead
+       of UTC (e.g. Malaysia, UTC+8). */
+    formatLocalISO(d){
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${day}`;
+    },
+    todayISO(){ return this.formatLocalISO(new Date()); },
     escapeHTML(s){
       return String(s==null?'':s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
     },
@@ -31,7 +41,7 @@
     addDays(dateStr, n){
       const d = new Date(dateStr + 'T00:00:00');
       d.setDate(d.getDate() + n);
-      return d.toISOString().slice(0,10);
+      return this.formatLocalISO(d);
     },
     /* Returns the ISO date of the Monday of the week containing dateStr. */
     startOfWeek(dateStr){
@@ -39,7 +49,7 @@
       const day = d.getDay(); // 0=Sun … 6=Sat
       const diff = day === 0 ? -6 : 1 - day;
       d.setDate(d.getDate() + diff);
-      return d.toISOString().slice(0,10);
+      return this.formatLocalISO(d);
     },
     /* Returns an array of "HH:MM" 30-min time slots for the clinic's opening
        hours on the given ISO date string, or [] if the clinic is closed that day. */
