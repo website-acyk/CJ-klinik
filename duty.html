@@ -10,12 +10,28 @@
 <div id="site-header"></div>
 
 <div class="section">
-  <h2 class="section-title" data-i18n="duty_title"></h2>
-  <p class="section-sub" id="duty-sub"></p>
-  <div class="grid duty-grid">
-    <div class="card duty-slot-card"><div class="slot-label">☀️ <span data-i18n="duty_morning"></span></div><div id="duty-morning"></div></div>
-    <div class="card duty-slot-card"><div class="slot-label">🌙 <span data-i18n="duty_afternoon"></span></div><div id="duty-afternoon"></div></div>
-  </div>
+<h2 class="section-title" data-i18n="duty_title"></h2>
+<p class="section-sub" id="duty-sub"></p>
+<div class="grid duty-grid">
+<div class="card duty-slot-card"><div class="slot-label">☀️ <span data-i18n="duty_morning"></span></div><div id="duty-morning"></div></div>
+<div class="card duty-slot-card"><div class="slot-label">🌙 <span data-i18n="duty_afternoon"></span></div><div id="duty-afternoon"></div></div>
+</div>
+</div>
+
+<div class="section" style="padding-top:0">
+<h2 class="section-title" data-i18n="duty_weekTitle"></h2>
+<p class="section-sub" data-i18n="duty_weekSub"></p>
+<div class="weekslot-toolbar">
+<div class="weekslot-nav">
+<button type="button" class="btn btn-outline btn-sm" id="duty-prev-week" data-i18n="slots_prevWeek"></button>
+<button type="button" class="btn btn-outline btn-sm" id="duty-this-week" data-i18n="slots_thisWeek"></button>
+<button type="button" class="btn btn-outline btn-sm" id="duty-next-week" data-i18n="slots_nextWeek"></button>
+<span class="weekslot-label" id="duty-week-label"></span>
+</div>
+</div>
+<div class="weekslot-table-wrap">
+<table class="weekslot-table" id="duty-week-grid"></table>
+</div>
 </div>
 
 <div id="site-footer"></div>
