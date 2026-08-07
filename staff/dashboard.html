@@ -13,18 +13,48 @@
   <div class="s-main">
     <div id="staff-topbar"></div>
     <div class="s-content">
+
+      <div class="dash-hero">
+        <div>
+          <div class="dash-hero-greeting" id="dash-greeting"></div>
+          <div class="dash-hero-date" id="dash-date"></div>
+        </div>
+        <div class="dash-hero-badge" id="dash-status-badge"></div>
+      </div>
+
       <div class="grid dash-grid" style="margin-bottom:24px">
-        <div class="card dash-stat"><div class="num" id="dash-new-appts">–</div><div class="lbl" data-i18n="dash_newAppts"></div></div>
-        <div class="card dash-stat"><div class="num" id="dash-notice-icon">–</div><div class="lbl" id="dash-notice-label"></div></div>
-        <div class="card dash-stat"><div class="num" id="dash-doctor-count">–</div><div class="lbl" data-i18n="doctors_title"></div></div>
+        <div class="card dash-stat-tile accent-amber"><div class="icon-wrap">📥</div><div><div class="num" id="dash-new-appts">–</div><div class="lbl" data-i18n="dash_newAppts"></div></div></div>
+        <div class="card dash-stat-tile accent-teal"><div class="icon-wrap">📅</div><div><div class="num" id="dash-week-appts">–</div><div class="lbl" data-i18n="dash_weekAppts"></div></div></div>
+        <div class="card dash-stat-tile accent-blue"><div class="icon-wrap">🩺</div><div><div class="num" id="dash-doctor-count">–</div><div class="lbl" data-i18n="doctors_title"></div></div></div>
+        <div class="card dash-stat-tile accent-green" id="dash-notice-tile"><div class="icon-wrap" id="dash-notice-icon">–</div><div><div class="num" style="font-size:14px" id="dash-notice-label"></div><div class="lbl" data-i18n="dash_todayNotice"></div></div></div>
       </div>
+
+      <div class="grid dash-widgets-grid" style="margin-bottom:24px">
+        <div class="card">
+          <div class="dash-section-title"><h3 data-i18n="duty_title"></h3><a href="/staff/slots" data-i18n="dash_viewAll"></a></div>
+          <div id="dash-duty-widget"><div class="spinner-row" data-i18n="loading"></div></div>
+        </div>
+        <div class="card">
+          <div class="dash-section-title"><h3 data-i18n="dash_staffOnDuty"></h3><a href="/staff/timetable" data-i18n="dash_viewAll"></a></div>
+          <div id="dash-roster-widget"><div class="spinner-row" data-i18n="loading"></div></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px;padding:20px 24px">
+        <div class="dash-section-title"><h3 data-i18n="dash_recentAppts"></h3><a href="/staff/appointments" data-i18n="dash_viewAll"></a></div>
+        <div id="dash-recent-appts"><div class="spinner-row" data-i18n="loading"></div></div>
+      </div>
+
       <h3 data-i18n="dash_quickLinks"></h3>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
-        <a class="btn btn-outline" href="/staff/slots">🩺 <span data-i18n="staff_slots"></span></a>
-        <a class="btn btn-outline" href="/staff/notices">📢 <span data-i18n="staff_notices"></span></a>
-        <a class="btn btn-outline" href="/staff/sheets">📊 <span data-i18n="staff_sheets"></span></a>
-        <a class="btn btn-outline" href="/staff/guidelines">📘 <span data-i18n="staff_guidelines"></span></a>
+      <div class="grid dash-quicklinks-grid">
+        <a class="card dash-quicklink-tile" href="/staff/slots"><div class="icon-wrap" style="background:var(--teal-100)">🩺</div><h4 data-i18n="staff_slots"></h4><p data-i18n="dash_qlSlotsDesc"></p></a>
+        <a class="card dash-quicklink-tile" href="/staff/notices"><div class="icon-wrap" style="background:var(--amber-100)">📢</div><h4 data-i18n="staff_notices"></h4><p data-i18n="dash_qlNoticesDesc"></p></a>
+        <a class="card dash-quicklink-tile" href="/staff/appointments"><div class="icon-wrap" style="background:var(--red-100)">📥</div><h4 data-i18n="staff_appointments"></h4><p data-i18n="dash_qlApptsDesc"></p></a>
+        <a class="card dash-quicklink-tile" href="/staff/timetable"><div class="icon-wrap" style="background:var(--violet-100)">🗓️</div><h4 data-i18n="staff_timetable"></h4><p data-i18n="dash_qlTimetableDesc"></p></a>
+        <a class="card dash-quicklink-tile" href="/staff/sheets"><div class="icon-wrap" style="background:var(--blue-100)">📊</div><h4 data-i18n="staff_sheets"></h4><p data-i18n="dash_qlSheetsDesc"></p></a>
+        <a class="card dash-quicklink-tile" href="/staff/guidelines"><div class="icon-wrap" style="background:var(--green-100)">📘</div><h4 data-i18n="staff_guidelines"></h4><p data-i18n="dash_qlGuidelinesDesc"></p></a>
       </div>
+
     </div>
   </div>
 </div>
