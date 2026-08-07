@@ -73,6 +73,47 @@
     }catch(e){ /* notice banner is non-critical; fail silently */ }
   }
 
+  /* ---------- notice popup (jump-out reminder of the active clinic notice) ---------- */
+  async function renderNoticePopup(){
+    try{
+      const { notice } = await window.CJ_API.getNotice();
+      if(!notice) return;
+      const signature = notice.type + '|' + notice.message;
+      const dismissKey = 'cj_notice_popup_dismissed';
+      let dismissed = '';
+      try{ dismissed = sessionStorage.getItem(dismissKey) || ''; }catch(e){}
+      if(dismissed === signature) return;
+
+      const tmpl = C.NOTICE_TEMPLATES.find(n=>n.type===notice.type);
+      const icon = tmpl ? tmpl.icon : '📢';
+      const title = tmpl ? tr(tmpl.label) : notice.type;
+      const U = window.CJ_UTIL;
+
+      document.body.insertAdjacentHTML('beforeend', `<div class="notice-popup-overlay open" id="notice-popup-overlay">
+        <div class="notice-popup-card">
+          <button type="button" class="notice-popup-close" id="notice-popup-close" aria-label="Close">✕</button>
+          <div class="notice-popup-icon">${icon}</div>
+          <h3 class="notice-popup-title">${U.escapeHTML(title)}</h3>
+          <p class="notice-popup-message">${U.escapeHTML(notice.message)}</p>
+          <button type="button" class="btn btn-primary notice-popup-ok" id="notice-popup-ok">${t('notices_popupGotIt')}</button>
+        </div>
+      </div>`);
+
+      const overlay = document.getElementById('notice-popup-overlay');
+      function dismiss(){
+        overlay.classList.remove('open');
+        try{ sessionStorage.setItem(dismissKey, signature); }catch(e){}
+        setTimeout(()=>overlay.remove(), 200);
+        document.removeEventListener('keydown', onKeydown);
+      }
+      function onKeydown(e){ if(e.key === 'Escape') dismiss(); }
+      document.getElementById('notice-popup-close').addEventListener('click', dismiss);
+      document.getElementById('notice-popup-ok').addEventListener('click', dismiss);
+      overlay.addEventListener('click', (e)=>{ if(e.target === overlay) dismiss(); });
+      document.addEventListener('keydown', onKeydown);
+    }catch(e){ /* notice popup is non-critical; fail silently */ }
+  }
+
   function initScrollReveal(){
     const els = document.querySelectorAll('.reveal');
     if(!els.length) return;
@@ -197,6 +238,7 @@
     if(langSelect) langSelect.addEventListener('change', e=>{ setLang(e.target.value); location.reload(); });
     applyStaticI18n();
     renderNoticeBanner();
+    renderNoticePopup();
     if(typeof window.CJ_PAGE_INIT === 'function') window.CJ_PAGE_INIT();
     initScrollReveal();
     initWaQuickForm();
