@@ -87,6 +87,13 @@
       if(s.startsWith('+60')) s = '0' + s.slice(3);
       else if(s.startsWith('60') && s.length > 9) s = '0' + s.slice(2);
       return /^0[1-9][0-9]{7,9}$/.test(s);
+    },
+    /* Basic email format check. Intentionally simple (not RFC-5322 exact) —
+       good enough to catch typos in an optional field. */
+    isValidEmail(raw){
+      const s = String(raw||'').trim();
+      if(!s) return false;
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
     }
   };
 
