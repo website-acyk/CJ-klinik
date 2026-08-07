@@ -97,6 +97,7 @@
   window.CJ_API = {
     getNotice: () => request('/api/notice'),
     getSlots: (date) => request('/api/slots?date=' + encodeURIComponent(date)),
+    getDoctorWeek: (start) => request('/api/slots-week?start=' + encodeURIComponent(start)),
     getBookedTimes: (date) => request('/api/booked-times?date=' + encodeURIComponent(date)),
     createAppointment: (body) => request('/api/appointments', {method:'POST', body: JSON.stringify(body)}),
 
