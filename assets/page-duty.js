@@ -32,6 +32,16 @@ const nextBtn = document.getElementById('duty-next-week');
 const thisWeekBtn = document.getElementById('duty-this-week');
 let weekStart = U.startOfWeek(today);
 
+const legendEl = document.getElementById('duty-week-legend');
+if(legendEl){
+legendEl.innerHTML = [
+{ cls:'state-off', label:t('slots_off') },
+{ cls:'state-am', label:t('slot_morning') },
+{ cls:'state-pm', label:t('slot_afternoon') },
+{ cls:'state-both', label:t('slot_both') }
+].map(i=>`<div class="duty-week-legend-item"><span class="duty-week-legend-swatch ${i.cls}"></span>${i.label}</div>`).join('');
+}
+
 function weekDates(){
 const out = [];
 for(let i=0;i<7;i++) out.push(U.addDays(weekStart, i));
@@ -74,7 +84,7 @@ return;
 
 const headerCells = dates.map((d,i)=>{
 const isToday = d === today;
-return `<th class="${isToday?'duty-week-today':''}">${tr(C.DAY_LABELS[DAY_KEYS[i]])}<span class="weekslot-date">${d}${isToday?' · '+t('duty_todayBadge'):''}</span></th>`;
+return `<th class="${isToday?'duty-week-today':''}">${tr(C.DAY_LABELS[DAY_KEYS[i]])}<span class="weekslot-date">${d}</span>${isToday?`<span class="duty-today-pill">${t('duty_todayBadge')}</span>`:''}</th>`;
 }).join('');
 
 const bodyRows = C.DOCTORS.map(doc=>{
@@ -83,7 +93,7 @@ const isToday = d === today;
 const st = stateFor(entries, doc.id, d);
 return `<td class="${isToday?'duty-week-today':''}"><span class="weekslot-btn ${classFor(st)}">${labelFor(st)}</span></td>`;
 }).join('');
-return `<tr><td class="weekslot-doc">${doc.photo} ${doc.name}</td>${cells}</tr>`;
+return `<tr><td class="weekslot-doc"><span class="duty-doc-avatar">${doc.photo}</span>${doc.name}</td>${cells}</tr>`;
 }).join('');
 
 weekGrid.innerHTML = `<thead><tr><th></th>${headerCells}</tr></thead><tbody>${bodyRows}</tbody>`;
